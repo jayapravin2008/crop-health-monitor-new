@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head><title>Login - Crop Health Monitor</title></head>
+<body>
+<section class="py-5 bg-light min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-header bg-success text-white text-center py-4">
+                        <h3 class="mb-0 fw-bold">Welcome Back</h3>
+                    </div>
+                    <div class="card-body p-5">
+                        <div th:if="${error}" class="alert alert-danger rounded-3" th:text="${error}"></div>
+                        <div th:if="${param.registered}" class="alert alert-success rounded-3">Registration successful! Please login.</div>
+                        <div th:if="${param.logout}" class="alert alert-info rounded-3">You have been logged out.</div>
+                        <form th:action="@{/login}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label text-muted fw-bold">Email</label>
+                                <input type="email" name="email" class="form-control form-control-lg bg-light" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-muted fw-bold">Password</label>
+                                <input type="password" name="password" class="form-control form-control-lg bg-light" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill fw-bold shadow">Login</button>
+                        </form>
+                        <p class="text-center mt-4 mb-0 text-muted">Don't have an account? <a th:href="@{/register}" class="text-success fw-bold text-decoration-none">Create Account</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

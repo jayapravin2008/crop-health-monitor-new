@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head><title>History - Crop Health Monitor</title></head>
+<body>
+<section class="py-5 bg-light min-vh-100">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold text-dark">Analysis History</h2>
+            <a th:href="@{/analyze}" class="btn btn-success rounded-pill px-4 shadow-sm"><i class="bi bi-plus-lg me-2"></i>New Analysis</a>
+        </div>
+        
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th class="ps-4 py-3">Date</th>
+                                <th class="py-3">Crop</th>
+                                <th class="py-3">Status</th>
+                                <th class="py-3">Disease</th>
+                                <th class="py-3">Confidence</th>
+                                <th class="pe-4 text-end py-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="analysis : ${analyses}">
+                                <td class="ps-4 text-muted" th:text="${#temporals.format(analysis.analyzedAt, 'dd MMM yyyy, HH:mm')}"></td>
+                                <td class="fw-bold text-dark">
+                                    <img th:src="@{'/uploads/' + ${analysis.imagePath}}" alt="Thumb" class="rounded me-2 object-fit-cover shadow-sm" style="width: 40px; height: 40px;">
+                                    <span th:text="${analysis.cropName}">Tomato</span>
+                                </td>
+                                <td>
+                                    <span class="badge rounded-pill px-3 py-2" 
+                                          th:classappend="${analysis.healthStatus == 'Healthy' ? 'bg-success bg-opacity-10 text-success' : 'bg-danger bg-opacity-10 text-danger'}" 
+                                          th:text="${analysis.healthStatus}">Healthy</span>
+                                </td>
+                                <td class="text-muted" th:text="${analysis.diseaseName}">None</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1 h-5px me-2 rounded-pill bg-light">
+                                            <div class="progress-bar bg-info rounded-pill" role="progressbar" th:style="'width: ' + ${analysis.confidence} + '%'"></div>
+                                        </div>
+                                        <small class="fw-bold" th:text="${analysis.confidence} + '%'">95%</small>
+                                    </div>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <a th:href="@{'/analysis/' + ${analysis.id}}" class="btn btn-sm btn-outline-primary rounded-pill me-1"><i class="bi bi-eye"></i> View</a>
+                                    <form th:action="@{'/analysis/delete/' + ${analysis.id}}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(analyses)}">
+                                <td colspan="6" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox display-4 d-block mb-3 opacity-50"></i>
+                                    No history found. Start analyzing crops to see them here.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

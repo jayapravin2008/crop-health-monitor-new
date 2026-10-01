@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Home - Crop Health Monitor</title>
+</head>
+<body>
+<section>
+    <!-- Hero Section -->
+    <div class="hero-section text-white text-center d-flex align-items-center justify-content-center" style="min-height: 80vh; background: linear-gradient(rgba(15, 61, 30, 0.8), rgba(15, 61, 30, 0.8)), url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&q=80') center/cover; padding: 100px 0;">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4 animation-fade-in">Smart Crop Health Monitoring with AI</h1>
+            <p class="lead mb-5 fs-4 animation-slide-up">Detect crop diseases early, monitor crop health, and receive intelligent recommendations.</p>
+            <div class="animation-slide-up delay-1">
+                <a th:href="@{/register}" class="btn btn-success btn-lg px-5 py-3 rounded-pill me-3 shadow-lg fw-bold">Get Started</a>
+                <a th:href="@{/login}" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg fw-bold">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container py-5 mt-5">
+        <h2 class="text-center text-success fw-bold mb-5">Powerful Features</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm feature-card p-3 rounded-4">
+                    <div class="card-body text-center">
+                        <i class="bi bi-camera text-success display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">AI Crop Analysis</h5>
+                        <p class="card-text text-muted">Upload a crop leaf image and analyze its health using advanced AI models.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm feature-card p-3 rounded-4">
+                    <div class="card-body text-center">
+                        <i class="bi bi-bug text-success display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Disease Detection</h5>
+                        <p class="card-text text-muted">Identify possible crop diseases accurately and display confidence percentages.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm feature-card p-3 rounded-4">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up text-success display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Health Monitoring</h5>
+                        <p class="card-text text-muted">Track previous crop analyses and monitor overall health statistics seamlessly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100 border-0 shadow-sm feature-card p-3 rounded-4">
+                    <div class="card-body text-center">
+                        <i class="bi bi-lightbulb text-success display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Smart Recommendations</h5>
+                        <p class="card-text text-muted">Receive actionable treatment and prevention information immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="bg-light py-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80" alt="Agriculture" class="img-fluid rounded-4 shadow-lg">
+                </div>
+                <div class="col-lg-6 px-lg-5">
+                    <h2 class="text-success fw-bold mb-4">About the System</h2>
+                    <p class="lead text-muted">This AI-Based Crop Health Monitoring and Disease Detection System empowers farmers and agronomists with cutting-edge technology.</p>
+                    <p class="text-muted">By leveraging artificial intelligence, we provide an accessible SaaS platform for rapid image-based diagnostics. Early detection of leaf diseases prevents crop loss, ensures food security, and optimizes agricultural output.</p>
+                    <ul class="list-unstyled mt-4 text-muted">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Fast and reliable diagnostics</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Secure data storage</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Easy to use interface</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
